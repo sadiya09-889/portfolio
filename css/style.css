@@ -172,13 +172,40 @@ h1, h2, h3, h4, h5, h6 {
 /* ===================================
    Hero Section
    =================================== */
+
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding-top: 80px;
+    padding: 80px 0 0 0;
+    margin: 0;
+    background-color: var(--bg-primary);
+    background-image: 
+        radial-gradient(circle, #bdc3c7 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(52, 152, 219, 0.03) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 80% 80%,
+        rgba(155, 89, 182, 0.03) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
 }
 
 .hero-content {
@@ -188,8 +215,146 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 40px;
     padding: 4rem 3rem;
     box-shadow: var(--clay-shadow-1);
+    position: relative;
+    z-index: 1;
+}
+/* ===================================
+   Floating Tech Icons - Dark & Smooth
+   =================================== */
+.floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
 }
 
+.icon {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(44, 62, 80, 0.4);
+    font-family: 'Courier New', monospace;
+    animation: float 20s infinite ease-in-out;
+}
+
+/* Individual Icon Positions */
+.icon-1 {
+    top: 15%;
+    left: 10%;
+    font-size: 3rem;
+    animation-duration: 25s;
+}
+
+.icon-2 {
+    top: 25%;
+    right: 15%;
+    font-size: 2.5rem;
+    animation-duration: 22s;
+}
+
+.icon-3 {
+    top: 60%;
+    left: 8%;
+    font-size: 2.8rem;
+    animation-duration: 28s;
+}
+
+.icon-4 {
+    top: 20%;
+    right: 25%;
+    font-size: 3.5rem;
+    color: rgba(52, 152, 219, 0.5);
+    animation-duration: 24s;
+}
+
+.icon-5 {
+    bottom: 20%;
+    right: 10%;
+    font-size: 2.5rem;
+    animation-duration: 26s;
+}
+
+.icon-6 {
+    top: 45%;
+    right: 5%;
+    font-size: 3rem;
+    animation-duration: 23s;
+}
+
+.icon-7 {
+    bottom: 30%;
+    left: 15%;
+    font-size: 1.8rem;
+    animation-duration: 27s;
+}
+
+.icon-8 {
+    top: 70%;
+    right: 30%;
+    font-size: 3.2rem;
+    color: rgba(155, 89, 182, 0.4);
+    animation-duration: 25s;
+}
+
+/* Smooth Floating Animation - No Delay */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
+}
+
+/* Responsive - Hide some icons on mobile */
+@media (max-width: 768px) {
+    .icon-6, .icon-7, .icon-8 {
+        display: none;
+    }
+    
+    .icon {
+        font-size: 1.5rem;
+    }
+    
+    .icon-1, .icon-4 {
+        font-size: 2rem;
+    }
+}
+
+/* Hero Decoration Image - Left Corner, Visible */
+.hero-decoration {
+    position: absolute;
+    bottom:-7%;
+    left: 0;
+    width: 40%;
+    max-width: 500px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Make sure hero-content is on top */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-decoration {
+        width: 60%;
+        opacity: 0.25;
+        top: 5%;
+    }
+}
+/* Make sure hero-content is on top */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -223,8 +388,48 @@ h1, h2, h3, h4, h5, h6 {
 /* ===================================
    About Section with Photo
    =================================== */
+/* ===================================
+   About Section
+   =================================== */
 .about {
     padding: 6rem 0;
+    position: relative;
+    background-color: var(--bg-secondary);
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(52, 152, 219, 0.03) 35px,
+            rgba(52, 152, 219, 0.03) 70px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(155, 89, 182, 0.02) 35px,
+            rgba(155, 89, 182, 0.02) 70px
+        );
+}
+/* Decorative Illustration */
+.about-decoration {
+    position: absolute;
+    top: -70px;
+    right: -50px;
+    width: 300px;
+    height: auto;
+    opacity: 1.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about .container {
+    position: relative;
+}
+
+.about-wrapper {
+    position: relative;
+    z-index: 1;
 }
 
 .about-wrapper {
@@ -242,7 +447,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile-photo {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1/1;
     border-radius: 30px;
     object-fit: cover;
     box-shadow: var(--clay-shadow-1);
@@ -251,8 +456,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-content {
     background: var(--bg-primary);
-    border-radius: 30px;
-    padding: 2.5rem;
+    border-radius: 20px;
+    padding: 2.1rem;
     box-shadow: var(--clay-shadow-1);
 }
 
@@ -269,6 +474,9 @@ h1, h2, h3, h4, h5, h6 {
 .skills {
     padding: 6rem 0;
     background: var(--bg-secondary);
+    background-image: 
+        radial-gradient(circle, rgba(10, 36, 63, 0.08) 2px, transparent 2px);
+    background-size: 40px 40px;
 }
 
 .skills-grid {
@@ -329,6 +537,17 @@ h1, h2, h3, h4, h5, h6 {
    =================================== */
 .projects {
     padding: 6rem 0;
+    padding: 6rem 0;
+    background: var(--bg-primary);
+    position: relative;
+    background-image: 
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(52, 152, 219, 0.04) 35px,
+            rgba(52, 152, 219, 0.04) 70px
+        );
 }
 
 .projects-list {
